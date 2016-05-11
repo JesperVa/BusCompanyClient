@@ -39,6 +39,17 @@ namespace BusCompanyClient
             SQLConnection.Close();
         }
 
+        public void SendSQLQuestion(MySqlCommand aQuestion)
+        {
+
+            //cmd.Parameters.AddWithValue(@var, variablen)
+            SQLConnection.Open();
+            aQuestion.Prepare();
+            SQLReader = aQuestion.ExecuteReader();
+            SQLConnection.Close();
+            SQLReader.Close();
+        }
+
       /* 
         public Object[] ReadConnectionObjects(string aTable)
         {

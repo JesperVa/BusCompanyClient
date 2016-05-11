@@ -14,6 +14,9 @@ namespace BusCompanyClient
         [STAThread]
         static void Main()
         {
+            Connection myConnection = new Connection();
+            Assigner myAssigner = new Assigner(myConnection);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
