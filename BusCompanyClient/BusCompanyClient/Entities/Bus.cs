@@ -50,6 +50,11 @@ namespace BusCompanyClient
             get { return myDate; }
         }
 
+        public int Price
+        {
+            get { return myPrice; }
+        }
+
         public Bus(int aID, string aDepartureTime, string aArrivalTime, string aWeekDay, string aDate,
             int aWeekNumber, int aPrice, int aSeats, string aFromDestination, string aToDestination)
         {

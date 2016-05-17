@@ -34,5 +34,17 @@ namespace BusCompanyClient
 
             return aDestination;
         }
+
+        public void RegisterDestination()
+        {
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO destination (Name, Country, Currency, Language) VALUES(@Name, @Country, @Currency, @Language)",
+                                              Program.myConnection.SQLConnection);
+            cmd.Parameters.AddWithValue("@Name", myName);
+            cmd.Parameters.AddWithValue("@Country", myCountry);
+            cmd.Parameters.AddWithValue("@Currency", myCurrency);
+            cmd.Parameters.AddWithValue("@Language", myLanguage);
+
+            Program.myConnection.SendSQLQuestion(cmd);
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace BusCompanyClient
     public partial class Form1 : Form
     {
         List<Booking> PackageBookings = new List<Booking>();
+        int myPackagePrice;
+
         public Form1()
         {
             InitializeComponent();
@@ -96,16 +98,14 @@ namespace BusCompanyClient
 
         private void TimeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-          /*  foreach(Bus b in Program.myAssigner.Buses)
+            foreach (Bus b in Program.myAssigner.Buses)
             {
-                if (b.FromDestination == (string)FromDestinationList.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem &&
-                    b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem)
+                if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem
+                    && b.FromDestination == (string)FromDestinationList.SelectedItem)
                 {
-                    ArrivalLabel.Text = "Arrival Time: " + b.ArrivalTime;
-                    DateLabel.Text = "Depature Date: " + b.Date;
+                    Pricelabel.Text = "Price : " + b.Price;
                 }
             }
-         */
         }
 
         private void ClearGeneral()
@@ -114,15 +114,17 @@ namespace BusCompanyClient
             DateLabel.Text = "Depature Date: "; */
             TimeBox.Items.Clear();
             BookedLabel.Visible = false;
+            Pricelabel.Text = "Price : 0";
         }
 
         private void ClearAll()
         {
             TimeBox.Items.Clear();
             ToDestinationList.Items.Clear();
-            FromDestinationList.Items.Clear();
-            PassengerList.Items.Clear();
             BookedLabel.Visible = false;
+            PackageBookings.Clear();
+            myPackagePrice = 0;
+            PackagepriceLabel.Text = "Package price : 0";
         }
 
         private void BookButton_Click(object sender, EventArgs e)
@@ -159,6 +161,8 @@ namespace BusCompanyClient
                     && b.FromDestination == (string)FromDestinationList.SelectedItem)
                 {
                     booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
+                    myPackagePrice += b.Price;
+                    PackagepriceLabel.Text = "Package price : " + myPackagePrice;
                 }
             }
             if (booking != null)
@@ -180,7 +184,7 @@ namespace BusCompanyClient
                 b.RegisterBooking();
             }
             BookedLabel.Visible = true;
-            PackageList.Items.Clear();
+            ClearAll();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -201,6 +205,24 @@ namespace BusCompanyClient
             {
                 SignUpLabel.Text = "You need to fill in all boxes with valid values to register";
                 SignUpLabel.Visible = true;
+            }
+        }
+
+        private void AddDestination_Click(object sender, EventArgs e)
+        {
+            if (LanguageBox.Text != String.Empty && DestinationBox.Text != String.Empty && CurrencyBox.Text != String.Empty && CountryBox.Text != String.Empty)
+            {
+                Destination destination = new Destination(DestinationBox.Text, CountryBox.Text, CurrencyBox.Text, LanguageBox.Text);
+                destination.RegisterDestination();
+                AddDestinationLabel.Text = "Destination added!";
+                AddDestinationLabel.Visible = true;
+
+            }
+
+            else
+            {
+                AddDestinationLabel.Text = "You need to fill in all values to add a destination!";
+                AddDestinationLabel.Visible = true;
             }
         }
     }
