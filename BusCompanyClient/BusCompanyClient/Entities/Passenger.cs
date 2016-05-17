@@ -43,5 +43,16 @@ namespace BusCompanyClient
             return passenger;
         }
 
+        public void RegisterPassenger()
+        {
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO passengers (PID, Name, Adress) VALUES(@PID, @Name, @Adress)",
+                                                Program.myConnection.SQLConnection);
+            cmd.Parameters.AddWithValue("@PID", myPID);
+            cmd.Parameters.AddWithValue("@Name", myName);
+            cmd.Parameters.AddWithValue("@Adress", myAdress);
+
+            Program.myConnection.SendSQLQuestion(cmd);
+        }
+
     }
 }

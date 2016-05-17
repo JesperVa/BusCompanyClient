@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TabController = new System.Windows.Forms.TabControl();
+            this.BookingPage = new System.Windows.Forms.TabPage();
+            this.BookPackageButton = new System.Windows.Forms.Button();
+            this.PackageList = new System.Windows.Forms.ListBox();
             this.BookedLabel = new System.Windows.Forms.Label();
             this.PackageButton = new System.Windows.Forms.Button();
             this.BookButton = new System.Windows.Forms.Button();
@@ -42,44 +44,72 @@
             this.PassengerList = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.PackageList = new System.Windows.Forms.ListBox();
-            this.BookPackageButton = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PIDBox = new System.Windows.Forms.TextBox();
+            this.AdressBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SignUpLabel = new System.Windows.Forms.Label();
+            this.TabController.SuspendLayout();
+            this.BookingPage.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // TabController
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(1, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(666, 347);
-            this.tabControl1.TabIndex = 0;
+            this.TabController.Controls.Add(this.BookingPage);
+            this.TabController.Controls.Add(this.tabPage2);
+            this.TabController.Controls.Add(this.tabPage3);
+            this.TabController.Location = new System.Drawing.Point(1, 0);
+            this.TabController.Name = "TabController";
+            this.TabController.SelectedIndex = 0;
+            this.TabController.Size = new System.Drawing.Size(666, 347);
+            this.TabController.TabIndex = 0;
             // 
-            // tabPage1
+            // BookingPage
             // 
-            this.tabPage1.Controls.Add(this.BookPackageButton);
-            this.tabPage1.Controls.Add(this.PackageList);
-            this.tabPage1.Controls.Add(this.BookedLabel);
-            this.tabPage1.Controls.Add(this.PackageButton);
-            this.tabPage1.Controls.Add(this.BookButton);
-            this.tabPage1.Controls.Add(this.TimeBox);
-            this.tabPage1.Controls.Add(this.ToLabel);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.ToDestinationList);
-            this.tabPage1.Controls.Add(this.FromDestinationList);
-            this.tabPage1.Controls.Add(this.PassengerLabel);
-            this.tabPage1.Controls.Add(this.PassengerList);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(658, 321);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Booking";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.BookingPage.Controls.Add(this.BookPackageButton);
+            this.BookingPage.Controls.Add(this.PackageList);
+            this.BookingPage.Controls.Add(this.BookedLabel);
+            this.BookingPage.Controls.Add(this.PackageButton);
+            this.BookingPage.Controls.Add(this.BookButton);
+            this.BookingPage.Controls.Add(this.TimeBox);
+            this.BookingPage.Controls.Add(this.ToLabel);
+            this.BookingPage.Controls.Add(this.label1);
+            this.BookingPage.Controls.Add(this.ToDestinationList);
+            this.BookingPage.Controls.Add(this.FromDestinationList);
+            this.BookingPage.Controls.Add(this.PassengerLabel);
+            this.BookingPage.Controls.Add(this.PassengerList);
+            this.BookingPage.Location = new System.Drawing.Point(4, 22);
+            this.BookingPage.Name = "BookingPage";
+            this.BookingPage.Padding = new System.Windows.Forms.Padding(3);
+            this.BookingPage.Size = new System.Drawing.Size(658, 321);
+            this.BookingPage.TabIndex = 0;
+            this.BookingPage.Text = "Booking";
+            this.BookingPage.UseVisualStyleBackColor = true;
+            //this.BookingPage.Click += new System.EventHandler(this.BookingPage_Click);
+            // 
+            // BookPackageButton
+            // 
+            this.BookPackageButton.Location = new System.Drawing.Point(512, 49);
+            this.BookPackageButton.Name = "BookPackageButton";
+            this.BookPackageButton.Size = new System.Drawing.Size(98, 23);
+            this.BookPackageButton.TabIndex = 13;
+            this.BookPackageButton.Text = "Book Package";
+            this.BookPackageButton.UseVisualStyleBackColor = true;
+            this.BookPackageButton.Click += new System.EventHandler(this.BookPackageButton_Click);
+            // 
+            // PackageList
+            // 
+            this.PackageList.Enabled = false;
+            this.PackageList.FormattingEnabled = true;
+            this.PackageList.Location = new System.Drawing.Point(259, 164);
+            this.PackageList.Name = "PackageList";
+            this.PackageList.Size = new System.Drawing.Size(247, 121);
+            this.PackageList.TabIndex = 12;
+            this.PackageList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
             // 
             // BookedLabel
             // 
@@ -175,6 +205,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.SignUpLabel);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.AdressBox);
+            this.tabPage2.Controls.Add(this.PIDBox);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.NameBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -193,46 +231,96 @@
             this.tabPage3.Text = "Add Destination";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // PackageList
+            // NameBox
             // 
-            this.PackageList.Enabled = false;
-            this.PackageList.FormattingEnabled = true;
-            this.PackageList.Location = new System.Drawing.Point(259, 164);
-            this.PackageList.Name = "PackageList";
-            this.PackageList.Size = new System.Drawing.Size(247, 121);
-            this.PackageList.TabIndex = 12;
-            this.PackageList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
+            this.NameBox.Location = new System.Drawing.Point(8, 24);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(100, 20);
+            this.NameBox.TabIndex = 0;
             // 
-            // BookPackageButton
+            // label2
             // 
-            this.BookPackageButton.Location = new System.Drawing.Point(512, 49);
-            this.BookPackageButton.Name = "BookPackageButton";
-            this.BookPackageButton.Size = new System.Drawing.Size(98, 23);
-            this.BookPackageButton.TabIndex = 13;
-            this.BookPackageButton.Text = "Book Package";
-            this.BookPackageButton.UseVisualStyleBackColor = true;
-            this.BookPackageButton.Click += new System.EventHandler(this.BookPackageButton_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Name";
+            // 
+            // PIDBox
+            // 
+            this.PIDBox.Location = new System.Drawing.Point(114, 24);
+            this.PIDBox.Name = "PIDBox";
+            this.PIDBox.Size = new System.Drawing.Size(100, 20);
+            this.PIDBox.TabIndex = 2;
+            // 
+            // AdressBox
+            // 
+            this.AdressBox.Location = new System.Drawing.Point(220, 24);
+            this.AdressBox.Name = "AdressBox";
+            this.AdressBox.Size = new System.Drawing.Size(100, 20);
+            this.AdressBox.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(111, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Personal-ID";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(220, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Adress";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(114, 62);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Sign up";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // SignUpLabel
+            // 
+            this.SignUpLabel.AutoSize = true;
+            this.SignUpLabel.Location = new System.Drawing.Point(11, 180);
+            this.SignUpLabel.Name = "SignUpLabel";
+            this.SignUpLabel.Size = new System.Drawing.Size(35, 13);
+            this.SignUpLabel.TabIndex = 7;
+            this.SignUpLabel.Text = "label5";
+            this.SignUpLabel.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 346);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabController);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.TabController.ResumeLayout(false);
+            this.BookingPage.ResumeLayout(false);
+            this.BookingPage.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl TabController;
+        private System.Windows.Forms.TabPage BookingPage;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label PassengerLabel;
@@ -247,6 +335,14 @@
         private System.Windows.Forms.Label BookedLabel;
         private System.Windows.Forms.ListBox PackageList;
         private System.Windows.Forms.Button BookPackageButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox AdressBox;
+        private System.Windows.Forms.TextBox PIDBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox NameBox;
+        private System.Windows.Forms.Label SignUpLabel;
     }
 }
 

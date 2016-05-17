@@ -54,6 +54,8 @@ namespace BusCompanyClient
 
         public void FillLists()
         {
+
+            ClearAll();
             PassengerList.DisplayMember = "Name";
             foreach (Passenger p in Program.myAssigner.Passengers)
             {
@@ -114,6 +116,15 @@ namespace BusCompanyClient
             BookedLabel.Visible = false;
         }
 
+        private void ClearAll()
+        {
+            TimeBox.Items.Clear();
+            ToDestinationList.Items.Clear();
+            FromDestinationList.Items.Clear();
+            PassengerList.Items.Clear();
+            BookedLabel.Visible = false;
+        }
+
         private void BookButton_Click(object sender, EventArgs e)
         {
            
@@ -170,6 +181,27 @@ namespace BusCompanyClient
             }
             BookedLabel.Visible = true;
             PackageList.Items.Clear();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (NameBox.Text != String.Empty && AdressBox.Text != String.Empty && PIDBox.Text != String.Empty && PIDBox.Text.Length >= 6)
+            {
+                Passenger passenger = new Passenger(PIDBox.Text, NameBox.Text, AdressBox.Text);
+                passenger.RegisterPassenger();
+                NameBox.Clear();
+                AdressBox.Clear();
+                PIDBox.Clear();
+                SignUpLabel.Text = "You have been registered!";
+                SignUpLabel.Visible = true;
+                Program.myAssigner = new Assigner(Program.myConnection);
+                FillLists();
+            }
+            else
+            {
+                SignUpLabel.Text = "You need to fill in all boxes with valid values to register";
+                SignUpLabel.Visible = true;
+            }
         }
     }
 }
