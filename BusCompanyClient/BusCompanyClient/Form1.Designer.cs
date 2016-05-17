@@ -28,81 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FromBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.DestinationBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.FromListBox = new System.Windows.Forms.ListBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.PassengerList = new System.Windows.Forms.ListBox();
+            this.PassengerLabel = new System.Windows.Forms.Label();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // FromBox
+            // tabControl1
             // 
-            this.FromBox.Location = new System.Drawing.Point(12, 28);
-            this.FromBox.Name = "FromBox";
-            this.FromBox.Size = new System.Drawing.Size(132, 22);
-            this.FromBox.TabIndex = 0;
-            this.FromBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(1, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(666, 347);
+            this.tabControl1.TabIndex = 0;
             // 
-            // label1
+            // tabPage1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "From";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.tabPage1.Controls.Add(this.PassengerLabel);
+            this.tabPage1.Controls.Add(this.PassengerList);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(658, 321);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Booking";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // DestinationBox
+            // tabPage2
             // 
-            this.DestinationBox.Location = new System.Drawing.Point(173, 28);
-            this.DestinationBox.Name = "DestinationBox";
-            this.DestinationBox.Size = new System.Drawing.Size(130, 22);
-            this.DestinationBox.TabIndex = 2;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(658, 321);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Sign Up";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // label2
+            // tabPage3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(170, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "To";
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(658, 321);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Add Destination";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // FromListBox
+            // PassengerList
             // 
-            this.FromListBox.FormattingEnabled = true;
-            this.FromListBox.ItemHeight = 16;
-            this.FromListBox.Location = new System.Drawing.Point(367, 65);
-            this.FromListBox.Name = "FromListBox";
-            this.FromListBox.Size = new System.Drawing.Size(120, 84);
-            this.FromListBox.TabIndex = 4;
-            this.FromListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.PassengerList.FormattingEnabled = true;
+            this.PassengerList.Location = new System.Drawing.Point(7, 20);
+            this.PassengerList.Name = "PassengerList";
+            this.PassengerList.Size = new System.Drawing.Size(120, 95);
+            this.PassengerList.TabIndex = 0;
+            // 
+            // PassengerLabel
+            // 
+            this.PassengerLabel.AutoSize = true;
+            this.PassengerLabel.Location = new System.Drawing.Point(8, 4);
+            this.PassengerLabel.Name = "PassengerLabel";
+            this.PassengerLabel.Size = new System.Drawing.Size(57, 13);
+            this.PassengerLabel.TabIndex = 1;
+            this.PassengerLabel.Text = "Passenger";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 426);
-            this.Controls.Add(this.FromListBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.DestinationBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.FromBox);
+            this.ClientSize = new System.Drawing.Size(668, 346);
+            this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox FromBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox DestinationBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox FromListBox;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label PassengerLabel;
+        private System.Windows.Forms.ListBox PassengerList;
     }
 }
 

@@ -45,5 +45,18 @@ namespace BusCompanyClient
 
          } */
         #endregion
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void FillLists(Assigner aAssigner)
+        {
+            foreach (Passenger p in aAssigner.Passengers)
+            {
+                PassengerList.Items.Add(p);
+            }
+        }
     }
 }

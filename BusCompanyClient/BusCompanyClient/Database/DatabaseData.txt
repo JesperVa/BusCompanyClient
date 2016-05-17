@@ -1,0 +1,107 @@
+USE af8408;
+
+CREATE TABLE Passengers(
+PID integer(10) primary key,
+Name varchar(40),
+Adress varchar(50)
+);
+
+CREATE TABLE destination(
+Name varchar(20) primary key,
+Country varchar(20),
+Currency varchar(20),
+Language varchar(15)
+);
+
+CREATE TABLE Bus(
+BusID integer primary key AUTO_INCREMENT,
+DepartureTime varchar(5),
+ArrivalTime varchar(5),
+WeekDay varchar(10),
+Date varchar(15),
+WeekNumber integer(2),
+Price integer,
+Seats integer,
+FromDestination varchar(20),
+ToDestination varchar(20),
+
+FOREIGN KEY (FromDestination) REFERENCES Destination(Name),
+FOREIGN KEY (ToDestination) REFERENCES Destination(Name)
+);
+
+CREATE TABLE ConnectedTo(
+Destination varchar(20),
+ConnectedTo varchar(20),
+
+FOREIGN KEY (Destination) REFERENCES destination(Name),
+FOREIGN KEY (ConnectedTo) REFERENCES destination(Name),
+PRIMARY KEY (Destination, ConnectedTo)
+);
+
+
+CREATE TABLE BookedDestination(
+TicketID integer AUTO_INCREMENT NOT NULL,
+ArrivalDestination varchar(20),
+FromDestination varchar(20),
+PassengerID integer(10),
+
+FOREIGN KEY (PassengerID) REFERENCES passengers(PID),
+FOREIGN KEY (ArrivalDestination) REFERENCES destination(Name),
+FOREIGN KEY (FromDestination) REFERENCES destination(Name),
+PRIMARY KEY (TicketID)
+);
+
+#VALUES Destination
+
+
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Copenhagen', 'Denmark', 'DKK', 'Danish');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Berlin', 'Germany', 'Euro', 'German');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Oslo', 'Norway', 'NKK', 'Norweigna');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Helsinki', 'Finland', 'Euro', 'Finnish');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Amsterdam', 'Netherlands', 'Euro', 'Dutch');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Rom', 'Italy', 'Euro', 'Italian');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Stockholm', 'Sweden', 'SEK', 'Swedish');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Madrid', 'Spain', 'Euro', 'Spanish');
+INSERT INTO Destination (Name, Country, Currency, Language) VALUES('Istanbul', 'Turkey', 'Turkish Lira', 'Turkish');
+
+#VALUES Bus
+
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('10:00', '14:00', 'Monday', '25/08', 30, 500, 120, 'Copenhagen', 'Berlin');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('14:00', '15:00', 'Tuesday', '26/08', 30, 800, 100, 'Stockholm', 'Copenhagen');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('17:00', '22:00', 'Wednesday', '27/08', 30, 400, 120, 'Berlin', 'Amsterdam');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('13:00', '18:00', 'Thursday', '28/08', 30, 1200, 120, 'Amsterdam', 'Madrid');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('13:00', '18:00', 'Friday', '29/08', 30, 1200, 120, 'Madrid', 'Amsterdam');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('10:00', '17:00', 'Monday', '25/08', 30, 800, 90, 'Rom', 'Istanbul');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('14:00', '15:00', 'Tuesday', '26/08', 30, 1500, 100, 'Istanbul', 'Copenhagen');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('17:00', '22:00', 'Wednesday', '27/08', 30, 300, 130, 'Oslo', 'Stockholm');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('17:00', '22:00', 'Thursday', '28/08', 30, 400, 130, 'Oslo', 'Stockholm');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('14:00', '18:00', 'Friday', '29/08', 30, 500, 120, 'Helsinki', 'Stockholm');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('14:00', '18:00', 'Sunday', '30/08', 30, 500, 120, 'Stockholm', 'Helsinki');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('14:00', '18:00', 'Monday', '25/08', 30, 700, 120, 'Madrid', 'Rom');
+
+INSERT INTO BUS (DepartureTime, ArrivalTime, WeekDay, Date, Weeknumber, Price, Seats, FromDestination, ToDestination)
+VALUES('14:00', '18:00', 'Tuesday', '26/08', 30, 700, 120, 'Rom', 'Madrid');

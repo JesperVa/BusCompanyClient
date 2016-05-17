@@ -7,11 +7,12 @@ using MySql.Data.MySqlClient;
 
 namespace BusCompanyClient
 {
-    class Assigner
+    public class Assigner
     {
         #region Member Variables
         private List<Bus> myBuses;
         private List<Destination> myDestinations;
+        private List<Passenger> myPassengers;
         #endregion
 
         #region Properties
@@ -19,11 +20,15 @@ namespace BusCompanyClient
         {
             get { return myBuses; }
         }
-        
 
         public List<Destination> Destinations
         {
             get { return myDestinations; }
+        }
+
+        public List<Passenger> Passengers
+        {
+            get { return myPassengers; }
         }
         #endregion
 
@@ -32,6 +37,7 @@ namespace BusCompanyClient
         {
             myBuses = new List<Bus>();
             myDestinations = new List<Destination>();
+            myPassengers = new List<Passenger>();
             Assign(aConnection);
         }
         #endregion
@@ -41,6 +47,7 @@ namespace BusCompanyClient
         {
             aConnection.SQLConnection.Open();
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM bus");
+            //cmd.Prepare();
 
             aConnection.SQLReader = cmd.ExecuteReader();
 
@@ -51,6 +58,7 @@ namespace BusCompanyClient
             aConnection.SQLReader.Close();
 
             cmd = new MySqlCommand("SELECT * FROM destination");
+            //cmd.Prepare();
 
             aConnection.SQLReader = cmd.ExecuteReader();
 
@@ -60,6 +68,16 @@ namespace BusCompanyClient
             }
             aConnection.SQLReader.Close();
             aConnection.SQLConnection.Close();
+
+            cmd = new MySqlCommand("SELECT * FROM passengers");
+            //cmd.Prepare();
+
+            aConnection.SQLReader = cmd.ExecuteReader();
+
+            while(aConnection.SQLReader.Read())
+            {
+                myPassengers.Add(Passenger.AssignPassenger(aConnection.SQLReader));
+            }
             
         }
         #endregion

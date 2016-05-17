@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace BusCompanyClient
 {
-    class Connection
+    public class Connection
     {
         private const string Adress = "195.178.232.16";
         private const string RootName = "af8408";

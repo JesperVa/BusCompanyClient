@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace BusCompanyClient
 {
-    class Destination
+    public class Destination
     {
         private string myName;
         private string myCountry;
