@@ -53,7 +53,7 @@ namespace BusCompanyClient
 
             while (aConnection.SQLReader.Read())
             {
-                //myBuses.Add(Bus.AssignBus(aConnection.SQLReader));
+                myBuses.Add(Bus.AssignBus(aConnection.SQLReader));
             }
             aConnection.SQLReader.Close();
 

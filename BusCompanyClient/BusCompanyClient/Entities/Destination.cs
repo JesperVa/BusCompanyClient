@@ -14,6 +14,11 @@ namespace BusCompanyClient
         private string myCurrency;
         private string myLanguage;
 
+        public string Name
+        {
+            get { return myName; }
+        }
+
         public Destination(string aName, string aCountry, string aCurrency, string aLanguage)
         {
             myName = aName;

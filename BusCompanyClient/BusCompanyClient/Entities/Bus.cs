@@ -20,6 +20,36 @@ namespace BusCompanyClient
         private string myFromDestination;
         private string myToDestination;
 
+        public int ID
+        {
+            get { return myID; }
+        }
+
+        public string FromDestination
+        {
+            get { return myFromDestination; }
+        }
+
+        public string ToDestination
+        {
+            get { return myToDestination; }
+        }
+
+        public string DepatureTime
+        {
+            get { return myDepartureTime; }
+        }
+
+        public string ArrivalTime
+        {
+            get { return myArrivalTime; }
+        }
+
+        public string Date
+        {
+            get { return myDate; }
+        }
+
         public Bus(int aID, string aDepartureTime, string aArrivalTime, string aWeekDay, string aDate,
             int aWeekNumber, int aPrice, int aSeats, string aFromDestination, string aToDestination)
         {
@@ -37,11 +67,10 @@ namespace BusCompanyClient
 
         public static Bus AssignBus(MySqlDataReader aReader)
         {
-            Bus aBus = new Bus(aReader.GetInt32(0), aReader.GetString(0), aReader.GetString(1), aReader.GetString(2),
-                aReader.GetString(3), aReader.GetInt32(1), aReader.GetInt32(2), aReader.GetInt32(3), 
-                aReader.GetString(4), aReader.GetString(5));
+            Bus bus = new Bus(aReader.GetInt32(0), aReader.GetString(1), aReader.GetString(2), aReader.GetString(3), aReader.GetString(4),
+                aReader.GetInt32(5), aReader.GetInt32(6), aReader.GetInt32(7), aReader.GetString(8), aReader.GetString(9));
             
-            return aBus;
+            return bus;
         }
     }
 }

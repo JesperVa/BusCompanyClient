@@ -11,16 +11,18 @@ namespace BusCompanyClient
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        /// 
+
+        public static Connection myConnection = new Connection();
+        public static Assigner myAssigner = new Assigner(myConnection);
+
         [STAThread]
         static void Main()
         {
-            Connection myConnection = new Connection();
-            Assigner myAssigner = new Assigner(myConnection);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 myForm = new Form1();
-            myForm.FillLists(myAssigner);
+            myForm.FillLists();
             Application.Run(myForm);
 
         }
