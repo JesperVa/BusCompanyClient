@@ -13,6 +13,22 @@ namespace BusCompanyClient
         private string myName;
         private string myAdress;
 
+        public string PID
+        {
+            get { return myPID; }
+        }
+        
+        public string Name
+        {
+            get { return myName; }
+        }
+
+        public string Adress
+        {
+            get { return myAdress; }
+        }
+
+
         public Passenger(string aPID, string aName, string aAdress)
         {
             myPID = aPID;

@@ -40,7 +40,7 @@ namespace BusCompanyClient
             Bus aBus = new Bus(aReader.GetInt32(0), aReader.GetString(0), aReader.GetString(1), aReader.GetString(2),
                 aReader.GetString(3), aReader.GetInt32(1), aReader.GetInt32(2), aReader.GetInt32(3), 
                 aReader.GetString(4), aReader.GetString(5));
-
+            
             return aBus;
         }
     }

@@ -16,7 +16,6 @@ namespace BusCompanyClient
         public Form1()
         {
             InitializeComponent();
-
         }
 
 
@@ -55,7 +54,7 @@ namespace BusCompanyClient
         {
             foreach (Passenger p in aAssigner.Passengers)
             {
-                PassengerList.Items.Add(p);
+                PassengerList.Items.Add(p.Name);
             }
         }
     }

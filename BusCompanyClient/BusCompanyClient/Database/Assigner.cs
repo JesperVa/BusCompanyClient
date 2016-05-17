@@ -46,19 +46,19 @@ namespace BusCompanyClient
         private void Assign(Connection aConnection)
         {
             aConnection.SQLConnection.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM bus");
-            //cmd.Prepare();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM bus", aConnection.SQLConnection);
+            cmd.Prepare();
 
             aConnection.SQLReader = cmd.ExecuteReader();
 
             while (aConnection.SQLReader.Read())
             {
-                myBuses.Add(Bus.AssignBus(aConnection.SQLReader));
+                //myBuses.Add(Bus.AssignBus(aConnection.SQLReader));
             }
             aConnection.SQLReader.Close();
 
-            cmd = new MySqlCommand("SELECT * FROM destination");
-            //cmd.Prepare();
+            cmd = new MySqlCommand("SELECT * FROM destination", aConnection.SQLConnection);
+            cmd.Prepare();
 
             aConnection.SQLReader = cmd.ExecuteReader();
 
@@ -67,10 +67,10 @@ namespace BusCompanyClient
                 myDestinations.Add(Destination.AssignDestination(aConnection.SQLReader));
             }
             aConnection.SQLReader.Close();
-            aConnection.SQLConnection.Close();
+            
 
-            cmd = new MySqlCommand("SELECT * FROM passengers");
-            //cmd.Prepare();
+            cmd = new MySqlCommand("SELECT * FROM passengers", aConnection.SQLConnection);
+            cmd.Prepare();
 
             aConnection.SQLReader = cmd.ExecuteReader();
 
@@ -78,7 +78,10 @@ namespace BusCompanyClient
             {
                 myPassengers.Add(Passenger.AssignPassenger(aConnection.SQLReader));
             }
-            
+
+            aConnection.SQLConnection.Close();
+            aConnection.SQLReader.Close();
+
         }
         #endregion
     }
