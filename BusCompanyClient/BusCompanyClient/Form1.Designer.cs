@@ -30,17 +30,20 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BookedLabel = new System.Windows.Forms.Label();
+            this.PackageButton = new System.Windows.Forms.Button();
+            this.BookButton = new System.Windows.Forms.Button();
+            this.TimeBox = new System.Windows.Forms.ListBox();
+            this.ToLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ToDestinationList = new System.Windows.Forms.ListBox();
+            this.FromDestinationList = new System.Windows.Forms.ListBox();
             this.PassengerLabel = new System.Windows.Forms.Label();
             this.PassengerList = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.FromDestinationList = new System.Windows.Forms.ListBox();
-            this.ToDestinationList = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ToLabel = new System.Windows.Forms.Label();
-            this.TimeBox = new System.Windows.Forms.ListBox();
-            this.ArrivalLabel = new System.Windows.Forms.Label();
-            this.DateLabel = new System.Windows.Forms.Label();
+            this.PackageList = new System.Windows.Forms.ListBox();
+            this.BookPackageButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -58,8 +61,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.DateLabel);
-            this.tabPage1.Controls.Add(this.ArrivalLabel);
+            this.tabPage1.Controls.Add(this.BookPackageButton);
+            this.tabPage1.Controls.Add(this.PackageList);
+            this.tabPage1.Controls.Add(this.BookedLabel);
+            this.tabPage1.Controls.Add(this.PackageButton);
+            this.tabPage1.Controls.Add(this.BookButton);
             this.tabPage1.Controls.Add(this.TimeBox);
             this.tabPage1.Controls.Add(this.ToLabel);
             this.tabPage1.Controls.Add(this.label1);
@@ -74,6 +80,81 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Booking";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // BookedLabel
+            // 
+            this.BookedLabel.AutoSize = true;
+            this.BookedLabel.Location = new System.Drawing.Point(11, 287);
+            this.BookedLabel.Name = "BookedLabel";
+            this.BookedLabel.Size = new System.Drawing.Size(121, 13);
+            this.BookedLabel.TabIndex = 11;
+            this.BookedLabel.Text = "You have booked a trip!";
+            this.BookedLabel.Visible = false;
+            // 
+            // PackageButton
+            // 
+            this.PackageButton.Location = new System.Drawing.Point(512, 78);
+            this.PackageButton.Name = "PackageButton";
+            this.PackageButton.Size = new System.Drawing.Size(98, 23);
+            this.PackageButton.TabIndex = 10;
+            this.PackageButton.Text = "Add to Package";
+            this.PackageButton.UseVisualStyleBackColor = true;
+            this.PackageButton.Click += new System.EventHandler(this.PackageButton_Click);
+            // 
+            // BookButton
+            // 
+            this.BookButton.Location = new System.Drawing.Point(512, 20);
+            this.BookButton.Name = "BookButton";
+            this.BookButton.Size = new System.Drawing.Size(98, 23);
+            this.BookButton.TabIndex = 9;
+            this.BookButton.Text = "Book";
+            this.BookButton.UseVisualStyleBackColor = true;
+            this.BookButton.Click += new System.EventHandler(this.BookButton_Click);
+            // 
+            // TimeBox
+            // 
+            this.TimeBox.FormattingEnabled = true;
+            this.TimeBox.Location = new System.Drawing.Point(386, 20);
+            this.TimeBox.Name = "TimeBox";
+            this.TimeBox.Size = new System.Drawing.Size(120, 95);
+            this.TimeBox.TabIndex = 6;
+            this.TimeBox.SelectedIndexChanged += new System.EventHandler(this.TimeBox_SelectedIndexChanged);
+            // 
+            // ToLabel
+            // 
+            this.ToLabel.AutoSize = true;
+            this.ToLabel.Location = new System.Drawing.Point(256, 4);
+            this.ToLabel.Name = "ToLabel";
+            this.ToLabel.Size = new System.Drawing.Size(20, 13);
+            this.ToLabel.TabIndex = 5;
+            this.ToLabel.Text = "To";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(133, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "From";
+            // 
+            // ToDestinationList
+            // 
+            this.ToDestinationList.FormattingEnabled = true;
+            this.ToDestinationList.Location = new System.Drawing.Point(259, 20);
+            this.ToDestinationList.Name = "ToDestinationList";
+            this.ToDestinationList.Size = new System.Drawing.Size(120, 95);
+            this.ToDestinationList.TabIndex = 3;
+            this.ToDestinationList.SelectedIndexChanged += new System.EventHandler(this.ToDestinationList_SelectedIndexChanged);
+            // 
+            // FromDestinationList
+            // 
+            this.FromDestinationList.FormattingEnabled = true;
+            this.FromDestinationList.Location = new System.Drawing.Point(133, 20);
+            this.FromDestinationList.Name = "FromDestinationList";
+            this.FromDestinationList.Size = new System.Drawing.Size(120, 95);
+            this.FromDestinationList.TabIndex = 2;
+            this.FromDestinationList.SelectedIndexChanged += new System.EventHandler(this.FromDestinationList_SelectedIndexChanged);
             // 
             // PassengerLabel
             // 
@@ -112,68 +193,25 @@
             this.tabPage3.Text = "Add Destination";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // FromDestinationList
+            // PackageList
             // 
-            this.FromDestinationList.FormattingEnabled = true;
-            this.FromDestinationList.Location = new System.Drawing.Point(133, 20);
-            this.FromDestinationList.Name = "FromDestinationList";
-            this.FromDestinationList.Size = new System.Drawing.Size(120, 95);
-            this.FromDestinationList.TabIndex = 2;
-            this.FromDestinationList.SelectedIndexChanged += new System.EventHandler(this.FromDestinationList_SelectedIndexChanged);
+            this.PackageList.Enabled = false;
+            this.PackageList.FormattingEnabled = true;
+            this.PackageList.Location = new System.Drawing.Point(259, 164);
+            this.PackageList.Name = "PackageList";
+            this.PackageList.Size = new System.Drawing.Size(247, 121);
+            this.PackageList.TabIndex = 12;
+            this.PackageList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
             // 
-            // ToDestinationList
+            // BookPackageButton
             // 
-            this.ToDestinationList.FormattingEnabled = true;
-            this.ToDestinationList.Location = new System.Drawing.Point(259, 20);
-            this.ToDestinationList.Name = "ToDestinationList";
-            this.ToDestinationList.Size = new System.Drawing.Size(120, 95);
-            this.ToDestinationList.TabIndex = 3;
-            this.ToDestinationList.SelectedIndexChanged += new System.EventHandler(this.ToDestinationList_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "From";
-            // 
-            // ToLabel
-            // 
-            this.ToLabel.AutoSize = true;
-            this.ToLabel.Location = new System.Drawing.Point(256, 4);
-            this.ToLabel.Name = "ToLabel";
-            this.ToLabel.Size = new System.Drawing.Size(20, 13);
-            this.ToLabel.TabIndex = 5;
-            this.ToLabel.Text = "To";
-            // 
-            // TimeBox
-            // 
-            this.TimeBox.FormattingEnabled = true;
-            this.TimeBox.Location = new System.Drawing.Point(386, 20);
-            this.TimeBox.Name = "TimeBox";
-            this.TimeBox.Size = new System.Drawing.Size(120, 95);
-            this.TimeBox.TabIndex = 6;
-            this.TimeBox.SelectedIndexChanged += new System.EventHandler(this.TimeBox_SelectedIndexChanged);
-            // 
-            // ArrivalLabel
-            // 
-            this.ArrivalLabel.AutoSize = true;
-            this.ArrivalLabel.Location = new System.Drawing.Point(513, 55);
-            this.ArrivalLabel.Name = "ArrivalLabel";
-            this.ArrivalLabel.Size = new System.Drawing.Size(68, 13);
-            this.ArrivalLabel.TabIndex = 7;
-            this.ArrivalLabel.Text = "Arrival Time: ";
-            // 
-            // DateLabel
-            // 
-            this.DateLabel.AutoSize = true;
-            this.DateLabel.Location = new System.Drawing.Point(513, 38);
-            this.DateLabel.Name = "DateLabel";
-            this.DateLabel.Size = new System.Drawing.Size(83, 13);
-            this.DateLabel.TabIndex = 8;
-            this.DateLabel.Text = "Depature Date: ";
+            this.BookPackageButton.Location = new System.Drawing.Point(512, 49);
+            this.BookPackageButton.Name = "BookPackageButton";
+            this.BookPackageButton.Size = new System.Drawing.Size(98, 23);
+            this.BookPackageButton.TabIndex = 13;
+            this.BookPackageButton.Text = "Book Package";
+            this.BookPackageButton.UseVisualStyleBackColor = true;
+            this.BookPackageButton.Click += new System.EventHandler(this.BookPackageButton_Click);
             // 
             // Form1
             // 
@@ -204,8 +242,11 @@
         private System.Windows.Forms.Label ToLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox TimeBox;
-        private System.Windows.Forms.Label ArrivalLabel;
-        private System.Windows.Forms.Label DateLabel;
+        private System.Windows.Forms.Button PackageButton;
+        private System.Windows.Forms.Button BookButton;
+        private System.Windows.Forms.Label BookedLabel;
+        private System.Windows.Forms.ListBox PackageList;
+        private System.Windows.Forms.Button BookPackageButton;
     }
 }
 

@@ -41,7 +41,6 @@ namespace BusCompanyClient
 
         public void SendSQLQuestion(MySqlCommand aQuestion)
         {
-
             //cmd.Parameters.AddWithValue(@var, variablen)
             SQLConnection.Open();
             aQuestion.Prepare();

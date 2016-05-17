@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace BusCompanyClient
 {
     public partial class Form1 : Form
     {
-        int myCurrentBusID;
-
+        List<Booking> PackageBookings = new List<Booking>();
         public Form1()
         {
             InitializeComponent();
@@ -54,15 +54,11 @@ namespace BusCompanyClient
 
         public void FillLists()
         {
+            PassengerList.DisplayMember = "Name";
             foreach (Passenger p in Program.myAssigner.Passengers)
             {
-                PassengerList.Items.Add(p.Name);
+                PassengerList.Items.Add(p);
             }
-
-            //foreach(Bus b in Program.myAssigner.Buses)
-            //{
-
-            //}
 
             foreach(Destination d in Program.myAssigner.Destinations)
             {
@@ -77,7 +73,7 @@ namespace BusCompanyClient
 
             foreach (Bus b in Program.myAssigner.Buses)
             {
-                if(b.FromDestination == (string)FromDestinationList.SelectedItem)
+                if(b.FromDestination == (string)FromDestinationList.SelectedItem && !ToDestinationList.Items.Contains(b.ToDestination))
                 {
                     ToDestinationList.Items.Add(b.ToDestination);
                 }
@@ -91,28 +87,89 @@ namespace BusCompanyClient
             {
                 if (b.FromDestination == (string)FromDestinationList.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem)
                 {
-                    TimeBox.Items.Add(b.DepatureTime);
+                    TimeBox.Items.Add(b.DepatureTime + " " + b.Date);
                 }
             }
         }
 
         private void TimeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach(Bus b in Program.myAssigner.Buses)
+          /*  foreach(Bus b in Program.myAssigner.Buses)
             {
-                if (b.FromDestination == (string)FromDestinationList.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem && b.DepatureTime == (string)TimeBox.SelectedItem)
+                if (b.FromDestination == (string)FromDestinationList.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem &&
+                    b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem)
                 {
                     ArrivalLabel.Text = "Arrival Time: " + b.ArrivalTime;
                     DateLabel.Text = "Depature Date: " + b.Date;
                 }
             }
+         */
         }
 
         private void ClearGeneral()
         {
-            ArrivalLabel.Text = "Arrival Time: ";
-            DateLabel.Text = "Depature Date: ";
+           /* ArrivalLabel.Text = "Arrival Time: ";
+            DateLabel.Text = "Depature Date: "; */
             TimeBox.Items.Clear();
+            BookedLabel.Visible = false;
+        }
+
+        private void BookButton_Click(object sender, EventArgs e)
+        {
+           
+
+            if (PassengerList.SelectedItem != null && TimeBox.SelectedItem != null)
+            {
+                Booking booking = null;
+
+                foreach (Bus b in Program.myAssigner.Buses)
+                {
+                    if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem 
+                        && b.FromDestination == (string)FromDestinationList.SelectedItem)
+                    {
+                        booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
+                    }
+                }
+                if (booking != null)
+                {
+                    booking.RegisterBooking();
+                    BookedLabel.Visible = true;
+                }
+            }
+        }
+
+        private void PackageButton_Click(object sender, EventArgs e)
+        {
+            Booking booking = null;
+
+            foreach (Bus b in Program.myAssigner.Buses)
+            {
+                if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem 
+                    && b.FromDestination == (string)FromDestinationList.SelectedItem)
+                {
+                    booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
+                }
+            }
+            if (booking != null)
+            {
+                PackageBookings.Add(booking);
+                PackageList.Items.Add(FromDestinationList.SelectedItem + " to " + ToDestinationList.SelectedItem + " on " + TimeBox.SelectedItem);
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BookPackageButton_Click(object sender, EventArgs e)
+        {
+            foreach (Booking b in PackageBookings)
+            {
+                b.RegisterBooking();
+            }
+            BookedLabel.Visible = true;
+            PackageList.Items.Clear();
         }
     }
 }

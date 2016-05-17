@@ -40,15 +40,13 @@ PRIMARY KEY (Destination, ConnectedTo)
 );
 
 
-CREATE TABLE BookedDestination(
+CREATE TABLE BookedTrip(
 TicketID integer AUTO_INCREMENT NOT NULL,
-ArrivalDestination varchar(20),
-FromDestination varchar(20),
 PassengerID integer(10),
+BusID int,
 
+FOREIGN KEY (BusID) REFERENCES bus(BusID),
 FOREIGN KEY (PassengerID) REFERENCES passengers(PID),
-FOREIGN KEY (ArrivalDestination) REFERENCES destination(Name),
-FOREIGN KEY (FromDestination) REFERENCES destination(Name),
 PRIMARY KEY (TicketID)
 );
 

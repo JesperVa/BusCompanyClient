@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Database\Assigner.cs" />
     <Compile Include="Database\Connection.cs" />
+    <Compile Include="Entities\Booking.cs" />
     <Compile Include="Entities\Bus.cs" />
     <Compile Include="Entities\Destination.cs" />
     <Compile Include="Entities\Passenger.cs" />
