@@ -225,5 +225,43 @@ namespace BusCompanyClient
                 AddDestinationLabel.Visible = true;
             }
         }
+
+        private void TripFromBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            BookedTrips.Items.Clear();
+            string tempName = usernameBox.Text;
+
+            foreach(Passenger p in Program.myAssigner.Passengers)
+            {
+                if(p.Name == tempName)
+                {
+                    string sqlQuestion = "SELECT bus.FromDestination, bus.ToDestination, bus.Date, bus.DepartureTime FROM bus INNER JOIN bookedtrip ON bookedtrip.BusID=bus.BusID WHERE bookedtrip.PassengerID = @PassengerID";
+                    var cmd = new MySqlCommand(sqlQuestion, Program.myConnection.SQLConnection);
+                    cmd.Parameters.AddWithValue("@PassengerID", p.PID);
+                    Program.myConnection.SQLConnection.Open();
+                    cmd.Prepare();
+
+                    Program.myConnection.SQLReader = cmd.ExecuteReader();
+
+                    while(Program.myConnection.SQLReader.Read())
+                    {
+                        string tempValues = "";
+                        tempValues += Program.myConnection.SQLReader.GetString(0);
+                        tempValues += " " + Program.myConnection.SQLReader.GetString(1);
+                        tempValues += " " + Program.myConnection.SQLReader.GetString(2);
+                        tempValues += " " + Program.myConnection.SQLReader.GetString(3);
+                        BookedTrips.Items.Add(tempValues);
+                    }
+                    Program.myConnection.SQLConnection.Close();
+                    Program.myConnection.SQLReader.Close();
+                    break;
+                }
+            }
+        }
     }
 }

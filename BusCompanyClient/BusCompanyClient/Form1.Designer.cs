@@ -30,6 +30,8 @@
         {
             this.TabController = new System.Windows.Forms.TabControl();
             this.BookingPage = new System.Windows.Forms.TabPage();
+            this.PackagepriceLabel = new System.Windows.Forms.Label();
+            this.Pricelabel = new System.Windows.Forms.Label();
             this.BookPackageButton = new System.Windows.Forms.Button();
             this.PackageList = new System.Windows.Forms.ListBox();
             this.BookedLabel = new System.Windows.Forms.Label();
@@ -52,27 +54,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.DestinationBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.CountryBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CurrencyBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.LanguageBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.AddDestination = new System.Windows.Forms.Button();
             this.AddDestinationLabel = new System.Windows.Forms.Label();
+            this.AddDestination = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.LanguageBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CurrencyBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CountryBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.DestinationBox = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.TripToBox = new System.Windows.Forms.ListBox();
-            this.TripFromBox = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.Pricelabel = new System.Windows.Forms.Label();
-            this.PackagepriceLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.UsernameLabel = new System.Windows.Forms.Label();
+            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.BookedTrips = new System.Windows.Forms.ListBox();
             this.TabController.SuspendLayout();
             this.BookingPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -115,6 +112,24 @@
             this.BookingPage.TabIndex = 0;
             this.BookingPage.Text = "Booking";
             this.BookingPage.UseVisualStyleBackColor = true;
+            // 
+            // PackagepriceLabel
+            // 
+            this.PackagepriceLabel.AutoSize = true;
+            this.PackagepriceLabel.Location = new System.Drawing.Point(513, 271);
+            this.PackagepriceLabel.Name = "PackagepriceLabel";
+            this.PackagepriceLabel.Size = new System.Drawing.Size(94, 13);
+            this.PackagepriceLabel.TabIndex = 15;
+            this.PackagepriceLabel.Text = "Package price : 0 ";
+            // 
+            // Pricelabel
+            // 
+            this.Pricelabel.AutoSize = true;
+            this.Pricelabel.Location = new System.Drawing.Point(11, 134);
+            this.Pricelabel.Name = "Pricelabel";
+            this.Pricelabel.Size = new System.Drawing.Size(46, 13);
+            this.Pricelabel.TabIndex = 14;
+            this.Pricelabel.Text = "Price : 0";
             // 
             // BookPackageButton
             // 
@@ -334,69 +349,15 @@
             this.tabPage3.Text = "Add Destination";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // DestinationBox
+            // AddDestinationLabel
             // 
-            this.DestinationBox.Location = new System.Drawing.Point(7, 29);
-            this.DestinationBox.Name = "DestinationBox";
-            this.DestinationBox.Size = new System.Drawing.Size(100, 20);
-            this.DestinationBox.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Destination";
-            // 
-            // CountryBox
-            // 
-            this.CountryBox.Location = new System.Drawing.Point(128, 29);
-            this.CountryBox.Name = "CountryBox";
-            this.CountryBox.Size = new System.Drawing.Size(100, 20);
-            this.CountryBox.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(128, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Country";
-            // 
-            // CurrencyBox
-            // 
-            this.CurrencyBox.Location = new System.Drawing.Point(253, 29);
-            this.CurrencyBox.Name = "CurrencyBox";
-            this.CurrencyBox.Size = new System.Drawing.Size(100, 20);
-            this.CurrencyBox.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(253, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Currency";
-            // 
-            // LanguageBox
-            // 
-            this.LanguageBox.Location = new System.Drawing.Point(378, 29);
-            this.LanguageBox.Name = "LanguageBox";
-            this.LanguageBox.Size = new System.Drawing.Size(100, 20);
-            this.LanguageBox.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(378, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Language";
+            this.AddDestinationLabel.AutoSize = true;
+            this.AddDestinationLabel.Location = new System.Drawing.Point(7, 178);
+            this.AddDestinationLabel.Name = "AddDestinationLabel";
+            this.AddDestinationLabel.Size = new System.Drawing.Size(156, 13);
+            this.AddDestinationLabel.TabIndex = 9;
+            this.AddDestinationLabel.Text = "You need to fill in all the values ";
+            this.AddDestinationLabel.Visible = false;
             // 
             // AddDestination
             // 
@@ -408,114 +369,127 @@
             this.AddDestination.UseVisualStyleBackColor = true;
             this.AddDestination.Click += new System.EventHandler(this.AddDestination_Click);
             // 
-            // AddDestinationLabel
+            // label8
             // 
-            this.AddDestinationLabel.AutoSize = true;
-            this.AddDestinationLabel.Location = new System.Drawing.Point(7, 178);
-            this.AddDestinationLabel.Name = "AddDestinationLabel";
-            this.AddDestinationLabel.Size = new System.Drawing.Size(156, 13);
-            this.AddDestinationLabel.TabIndex = 9;
-            this.AddDestinationLabel.Text = "You need to fill in all the values ";
-            this.AddDestinationLabel.Visible = false;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(378, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Language";
+            // 
+            // LanguageBox
+            // 
+            this.LanguageBox.Location = new System.Drawing.Point(378, 29);
+            this.LanguageBox.Name = "LanguageBox";
+            this.LanguageBox.Size = new System.Drawing.Size(100, 20);
+            this.LanguageBox.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(253, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Currency";
+            // 
+            // CurrencyBox
+            // 
+            this.CurrencyBox.Location = new System.Drawing.Point(253, 29);
+            this.CurrencyBox.Name = "CurrencyBox";
+            this.CurrencyBox.Size = new System.Drawing.Size(100, 20);
+            this.CurrencyBox.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(128, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Country";
+            // 
+            // CountryBox
+            // 
+            this.CountryBox.Location = new System.Drawing.Point(128, 29);
+            this.CountryBox.Name = "CountryBox";
+            this.CountryBox.Size = new System.Drawing.Size(100, 20);
+            this.CountryBox.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Destination";
+            // 
+            // DestinationBox
+            // 
+            this.DestinationBox.Location = new System.Drawing.Point(7, 29);
+            this.DestinationBox.Name = "DestinationBox";
+            this.DestinationBox.Size = new System.Drawing.Size(100, 20);
+            this.DestinationBox.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.TripFromBox);
-            this.tabPage1.Controls.Add(this.TripToBox);
+            this.tabPage1.Controls.Add(this.searchButton);
+            this.tabPage1.Controls.Add(this.UsernameLabel);
+            this.tabPage1.Controls.Add(this.usernameBox);
+            this.tabPage1.Controls.Add(this.BookedTrips);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(658, 321);
             this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Add trip";
+            this.tabPage1.Text = "Find booked trips";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // TripToBox
-            // 
-            this.TripToBox.FormattingEnabled = true;
-            this.TripToBox.Location = new System.Drawing.Point(45, 33);
-            this.TripToBox.Name = "TripToBox";
-            this.TripToBox.Size = new System.Drawing.Size(120, 95);
-            this.TripToBox.TabIndex = 0;
-            // 
-            // TripFromBox
-            // 
-            this.TripFromBox.FormattingEnabled = true;
-            this.TripFromBox.Location = new System.Drawing.Point(201, 33);
-            this.TripFromBox.Name = "TripFromBox";
-            this.TripFromBox.Size = new System.Drawing.Size(120, 95);
-            this.TripFromBox.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(435, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(435, 74);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(435, 14);
+            this.label9.Location = new System.Drawing.Point(246, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 13);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Date";
+            this.label9.Size = new System.Drawing.Size(168, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "From / To / Date / Departure time";
             // 
-            // label10
+            // searchButton
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(435, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "label10";
+            this.searchButton.Location = new System.Drawing.Point(134, 26);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 5;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox3
+            // UsernameLabel
             // 
-            this.textBox3.Location = new System.Drawing.Point(435, 113);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.Location = new System.Drawing.Point(7, 10);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(55, 13);
+            this.UsernameLabel.TabIndex = 4;
+            this.UsernameLabel.Text = "Username";
             // 
-            // label11
+            // usernameBox
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(435, 97);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "label11";
+            this.usernameBox.Location = new System.Drawing.Point(10, 26);
+            this.usernameBox.Name = "usernameBox";
+            this.usernameBox.Size = new System.Drawing.Size(100, 20);
+            this.usernameBox.TabIndex = 2;
             // 
-            // Pricelabel
+            // BookedTrips
             // 
-            this.Pricelabel.AutoSize = true;
-            this.Pricelabel.Location = new System.Drawing.Point(11, 134);
-            this.Pricelabel.Name = "Pricelabel";
-            this.Pricelabel.Size = new System.Drawing.Size(46, 13);
-            this.Pricelabel.TabIndex = 14;
-            this.Pricelabel.Text = "Price : 0";
-            // 
-            // PackagepriceLabel
-            // 
-            this.PackagepriceLabel.AutoSize = true;
-            this.PackagepriceLabel.Location = new System.Drawing.Point(513, 271);
-            this.PackagepriceLabel.Name = "PackagepriceLabel";
-            this.PackagepriceLabel.Size = new System.Drawing.Size(94, 13);
-            this.PackagepriceLabel.TabIndex = 15;
-            this.PackagepriceLabel.Text = "Package price : 0 ";
+            this.BookedTrips.FormattingEnabled = true;
+            this.BookedTrips.Location = new System.Drawing.Point(237, 26);
+            this.BookedTrips.Name = "BookedTrips";
+            this.BookedTrips.Size = new System.Drawing.Size(327, 277);
+            this.BookedTrips.TabIndex = 1;
+            this.BookedTrips.SelectedIndexChanged += new System.EventHandler(this.TripFromBox_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -578,14 +552,11 @@
         private System.Windows.Forms.Label PackagepriceLabel;
         private System.Windows.Forms.Label Pricelabel;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label UsernameLabel;
+        private System.Windows.Forms.TextBox usernameBox;
+        private System.Windows.Forms.ListBox BookedTrips;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox TripFromBox;
-        private System.Windows.Forms.ListBox TripToBox;
     }
 }
 
