@@ -58,13 +58,15 @@ namespace BusCompanyClient
         {
 
             ClearAll();
-            PassengerList.Items.Clear();
+
+            //Not being used anymore
+            /*PassengerList.Items.Clear();
             PassengerList.DisplayMember = "Name";
             
             foreach (Passenger p in Program.myAssigner.Passengers)
             {
                 PassengerList.Items.Add(p);
-            }
+            }*/
 
             foreach(Destination d in Program.myAssigner.Destinations)
             {
@@ -133,7 +135,7 @@ namespace BusCompanyClient
         {
            
 
-            if (PassengerList.SelectedItem != null && TimeBox.SelectedItem != null)
+            if (PassengerBox.Text != String.Empty && TimeBox.SelectedItem != null)
             {
                 Booking booking = null;
 
@@ -142,7 +144,7 @@ namespace BusCompanyClient
                     if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem 
                         && b.FromDestination == (string)FromDestinationList.SelectedItem)
                     {
-                        booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
+                        booking = new Booking(PassengerBox.Text, b.ID);
                     }
                 }
                 if (booking != null)
@@ -164,7 +166,7 @@ namespace BusCompanyClient
                     if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem
                         && b.FromDestination == (string)FromDestinationList.SelectedItem)
                     {
-                        booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
+                        booking = new Booking(PassengerBox.Text, b.ID);
                         myPackagePrice += b.Price;
                         PackagepriceLabel.Text = "Package price : " + myPackagePrice;
                     }

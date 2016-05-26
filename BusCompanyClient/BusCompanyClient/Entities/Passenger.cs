@@ -28,6 +28,12 @@ namespace BusCompanyClient
             get { return myAdress; }
         }
 
+        public Passenger(int aPID, string aName, string aAdress)
+        {
+            myPID = aPID.ToString();
+            myName = aName;
+            myAdress = aAdress;
+        }
 
         public Passenger(string aPID, string aName, string aAdress)
         {

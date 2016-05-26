@@ -12,6 +12,29 @@ namespace BusCompanyClient
         int myBusID;
         Passenger myPassenger;
 
+        public Booking(string aPassenger, int aBusID)
+        {
+            myBusID = aBusID;
+            Program.myConnection.SQLConnection.Open();
+            try
+            {
+                MySqlCommand question = new MySqlCommand("SELECT * FROM passengers WHERE name=@aName", Program.myConnection.SQLConnection);
+                question.Parameters.AddWithValue("@aName", aPassenger);
+                question.Prepare();
+                Program.myConnection.SQLReader = question.ExecuteReader();
+                Program.myConnection.SQLReader.Read();
+                myPassenger = new Passenger(Program.myConnection.SQLReader.GetInt32(0), Program.myConnection.SQLReader.GetString(1),
+                                            Program.myConnection.SQLReader.GetString(2));
+                Program.myConnection.SQLConnection.Close();
+                Program.myConnection.SQLReader.Close();
+            }
+            catch (MySqlException e)
+            {
+                //TODO: Insert error shit
+                string test = e.Message;
+            }
+        }
+
         public Booking(Passenger aPassenger, int aBusID)
         {
             myBusID = aBusID;
