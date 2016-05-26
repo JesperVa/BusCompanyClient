@@ -23,7 +23,7 @@ namespace BusCompanyClient
         }
 
 
-        #region Shit
+        #region Don't touch will break
         private void button1_Click(object sender, EventArgs e)
         {
         }
@@ -58,7 +58,9 @@ namespace BusCompanyClient
         {
 
             ClearAll();
+            PassengerList.Items.Clear();
             PassengerList.DisplayMember = "Name";
+            
             foreach (Passenger p in Program.myAssigner.Passengers)
             {
                 PassengerList.Items.Add(p);
@@ -153,22 +155,30 @@ namespace BusCompanyClient
 
         private void PackageButton_Click(object sender, EventArgs e)
         {
-            Booking booking = null;
-
-            foreach (Bus b in Program.myAssigner.Buses)
+            if (PackageList.SelectedItem != null)
             {
-                if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem 
-                    && b.FromDestination == (string)FromDestinationList.SelectedItem)
+                Booking booking = null;
+
+                foreach (Bus b in Program.myAssigner.Buses)
                 {
-                    booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
-                    myPackagePrice += b.Price;
-                    PackagepriceLabel.Text = "Package price : " + myPackagePrice;
+                    if (b.DepatureTime + " " + b.Date == (string)TimeBox.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem
+                        && b.FromDestination == (string)FromDestinationList.SelectedItem)
+                    {
+                        booking = new Booking((Passenger)PassengerList.SelectedItem, b.ID);
+                        myPackagePrice += b.Price;
+                        PackagepriceLabel.Text = "Package price : " + myPackagePrice;
+                    }
+                }
+                if (booking != null)
+                {
+                    PackageBookings.Add(booking);
+                    PackageList.Items.Add(FromDestinationList.SelectedItem + " to " + ToDestinationList.SelectedItem + " on " + TimeBox.SelectedItem);
                 }
             }
-            if (booking != null)
+            else
             {
-                PackageBookings.Add(booking);
-                PackageList.Items.Add(FromDestinationList.SelectedItem + " to " + ToDestinationList.SelectedItem + " on " + TimeBox.SelectedItem);
+                BookedLabel.Text = "You need to select a passenger to book a package";
+                BookedLabel.Visible = true;
             }
         }
 

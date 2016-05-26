@@ -9,9 +9,9 @@ namespace BusCompanyClient
 {
     public class Connection
     {
-        private const string Adress = "localhost";
-        private const string RootName = "root";
-        private const string Password = "";
+        private const string Adress = "ddwap.mah.se";
+        private const string RootName = "af8408";
+        private const string Password = "Naelnael10";
         private const string Database = "af8408";
 
         public MySqlConnection SQLConnection;
