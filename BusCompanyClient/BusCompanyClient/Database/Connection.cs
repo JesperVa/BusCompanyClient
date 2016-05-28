@@ -9,19 +9,25 @@ namespace BusCompanyClient
 {
     public class Connection
     {
+        //Access to the database
         private const string Adress = "ddwap.mah.se";
         private const string RootName = "af8408";
         private const string Password = "Naelnael10";
         private const string Database = "af8408";
 
+        //Variables for the connection and the reader
         public MySqlConnection SQLConnection;
         public MySqlDataReader SQLReader;
 
+        //Constructor
         public Connection()
         {
             EstablishConnection();
         }
 
+        /// <summary>
+        /// Tries to establish a connection to the database
+        /// </summary>
         private void EstablishConnection()
         {
             try
@@ -39,32 +45,17 @@ namespace BusCompanyClient
             SQLConnection.Close();
         }
 
+        /// <summary>
+        /// Used when you want to update the database with a question
+        /// </summary>
+        /// <param name="aQuestion">A valid MySQL question, doesn't need to be pre-prepared</param>
         public void SendSQLQuestion(MySqlCommand aQuestion)
         {
-            //cmd.Parameters.AddWithValue(@var, variablen)
             SQLConnection.Open();
             aQuestion.Prepare();
             SQLReader = aQuestion.ExecuteReader();
             SQLConnection.Close();
             SQLReader.Close();
         }
-
-      /* 
-        public Object[] ReadConnectionObjects(string aTable)
-        {
-            Object[] objects;
-
-            myConnection.Open();
-            var cmd = new MySqlCommand("SELECT * FROM " + aTable);
-            myReader = cmd.ExecuteReader();
-
-            while (myReader.Read())
-            {
-
-            }
-
-            return objects; 
-        }
-        */
     }
 }

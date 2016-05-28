@@ -22,8 +22,17 @@ namespace BusCompanyClient
             InitializeComponent();
         }
 
-
         #region Don't touch will break
+        private void TripFromBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
         }
@@ -47,26 +56,17 @@ namespace BusCompanyClient
          {
 
          } */
-        #endregion
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }
+        #endregion
 
         public void FillLists()
         {
 
             ClearAll();
-
-            //Not being used anymore
-            /*PassengerList.Items.Clear();
-            PassengerList.DisplayMember = "Name";
-            
-            foreach (Passenger p in Program.myAssigner.Passengers)
-            {
-                PassengerList.Items.Add(p);
-            }*/
 
             foreach(Destination d in Program.myAssigner.Destinations)
             {
@@ -74,6 +74,7 @@ namespace BusCompanyClient
             }
         }
 
+        //Loads the destionations you can travel to when the "From destination" is changed
         private void FromDestinationList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearGeneral();
@@ -88,6 +89,7 @@ namespace BusCompanyClient
             }
         }
 
+        //Loads the avaliable depature times when the "To destination" is selected
         private void ToDestinationList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearGeneral();
@@ -100,6 +102,7 @@ namespace BusCompanyClient
             }
         }
 
+        //Loads the price of the booking when an entire trip is booked
         private void TimeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Bus b in Program.myAssigner.Buses)
@@ -112,15 +115,15 @@ namespace BusCompanyClient
             }
         }
 
+        //Used for clearing general boxes/labels
         private void ClearGeneral()
         {
-           /* ArrivalLabel.Text = "Arrival Time: ";
-            DateLabel.Text = "Depature Date: "; */
             TimeBox.Items.Clear();
             BookedLabel.Visible = false;
             Pricelabel.Text = "Price : 0";
         }
 
+        //Clears everything in the first tab
         private void ClearAll()
         {
             TimeBox.Items.Clear();
@@ -131,10 +134,9 @@ namespace BusCompanyClient
             PackagepriceLabel.Text = "Package price : 0";
         }
 
+        //If all the criterias are met a booking is made and uploaded into the database
         private void BookButton_Click(object sender, EventArgs e)
         {
-           
-
             if (PassengerBox.Text != String.Empty && TimeBox.SelectedItem != null)
             {
                 Booking booking = null;
@@ -155,6 +157,7 @@ namespace BusCompanyClient
             }
         }
 
+        //Adds a booking to the current package
         private void PackageButton_Click(object sender, EventArgs e)
         {
             if (PackageList.SelectedItem != null)
@@ -184,11 +187,7 @@ namespace BusCompanyClient
             }
         }
 
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
+        //Books all the bookings in the package
         private void BookPackageButton_Click(object sender, EventArgs e)
         {
             foreach (Booking b in PackageBookings)
@@ -199,6 +198,7 @@ namespace BusCompanyClient
             ClearAll();
         }
 
+        //If the first tab is chosen inside the tabform it reloads the information and looks for changes in the database
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (NameBox.Text != String.Empty && AdressBox.Text != String.Empty && PIDBox.Text != String.Empty && PIDBox.Text.Length >= 6)
@@ -220,6 +220,7 @@ namespace BusCompanyClient
             }
         }
 
+        //Adds a destination to the database
         private void AddDestination_Click(object sender, EventArgs e)
         {
             if (LanguageBox.Text != String.Empty && DestinationBox.Text != String.Empty && CurrencyBox.Text != String.Empty && CountryBox.Text != String.Empty)
@@ -238,11 +239,7 @@ namespace BusCompanyClient
             }
         }
 
-        private void TripFromBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //Lists all the current booked trips made by a user
         private void searchButton_Click(object sender, EventArgs e)
         {
             BookedTrips.Items.Clear();

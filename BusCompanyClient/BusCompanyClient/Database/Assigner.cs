@@ -16,16 +16,25 @@ namespace BusCompanyClient
         #endregion
 
         #region Properties
+        /// <summary>
+        /// List of all the currently existing buses
+        /// </summary>
         public List<Bus> Buses
         {
             get { return myBuses; }
         }
 
+        /// <summary>
+        /// List of all the currently registered destinations
+        /// </summary>
         public List<Destination> Destinations
         {
             get { return myDestinations; }
         }
 
+        /// <summary>
+        /// List of all the currently registered passengers
+        /// </summary>
         public List<Passenger> Passengers
         {
             get { return myPassengers; }
@@ -33,6 +42,10 @@ namespace BusCompanyClient
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aConnection">A valid SQL connection</param>
         public Assigner(Connection aConnection)
         {
             myBuses = new List<Bus>();
@@ -43,6 +56,10 @@ namespace BusCompanyClient
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Method used for updating all the lists
+        /// </summary>
+        /// <param name="aConnection"></param>
         private void Assign(Connection aConnection)
         {
             aConnection.SQLConnection.Open();

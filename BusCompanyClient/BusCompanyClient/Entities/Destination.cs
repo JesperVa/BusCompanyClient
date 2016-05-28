@@ -35,6 +35,9 @@ namespace BusCompanyClient
             return aDestination;
         }
 
+        /// <summary>
+        /// Used for registering a destination to the database
+        /// </summary>
         public void RegisterDestination()
         {
             MySqlCommand cmd = new MySqlCommand("INSERT INTO destination (Name, Country, Currency, Language) VALUES(@Name, @Country, @Currency, @Language)",

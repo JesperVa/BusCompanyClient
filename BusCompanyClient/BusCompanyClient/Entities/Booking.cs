@@ -12,6 +12,11 @@ namespace BusCompanyClient
         int myBusID;
         Passenger myPassenger;
 
+        /// <summary>
+        /// Constructor that will find the passenger from the database and take out all the nessecary information from it using a string
+        /// </summary>
+        /// <param name="aPassenger">A string of the passengers name</param>
+        /// <param name="aBusID">The bus ID</param>
         public Booking(string aPassenger, int aBusID)
         {
             myBusID = aBusID;
@@ -35,12 +40,20 @@ namespace BusCompanyClient
             }
         }
 
+        /// <summary>
+        /// Constructor that takes an already initalized passenger
+        /// </summary>
+        /// <param name="aPassenger">A passenger</param>
+        /// <param name="aBusID">A busID</param>
         public Booking(Passenger aPassenger, int aBusID)
         {
             myBusID = aBusID;
             myPassenger = aPassenger;
         }
 
+        /// <summary>
+        /// Method used for registering a booking by sending the information to the database
+        /// </summary>
         public void RegisterBooking()
         {
             MySqlCommand cmd = new MySqlCommand("INSERT INTO bookedtrip (PassengerID, BusID) VALUES(@Passenger, @BusID)",
