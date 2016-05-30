@@ -79,6 +79,17 @@ namespace BusCompanyClient
         {
             ClearGeneral();
             ToDestinationList.Items.Clear();
+            ToLanguageLB.Text = "Language: ";
+            ToCurrencyLB.Text = "Currency: ";
+
+            foreach (Destination d in Program.myAssigner.Destinations)
+            {
+                if ((string)FromDestinationList.SelectedItem == d.Name)
+                {
+                    FromLanguageLB.Text = "Language: " + d.Language;
+                    FromCurrencyLB.Text = "Currency: " + d.Currency;
+                }
+            }
 
             foreach (Bus b in Program.myAssigner.Buses)
             {
@@ -93,6 +104,16 @@ namespace BusCompanyClient
         private void ToDestinationList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearGeneral();
+
+            foreach (Destination d in Program.myAssigner.Destinations)
+            {
+                if ((string)ToDestinationList.SelectedItem == d.Name)
+                {
+                    ToLanguageLB.Text = "Language: " + d.Language;
+                    ToCurrencyLB.Text = "Currency: " + d.Currency;
+                }
+            }
+
             foreach (Bus b in Program.myAssigner.Buses)
             {
                 if (b.FromDestination == (string)FromDestinationList.SelectedItem && b.ToDestination == (string)ToDestinationList.SelectedItem)
@@ -160,7 +181,7 @@ namespace BusCompanyClient
         //Adds a booking to the current package
         private void PackageButton_Click(object sender, EventArgs e)
         {
-            if (PackageList.SelectedItem != null)
+            if (PassengerBox.Text != String.Empty)
             {
                 Booking booking = null;
 
@@ -195,6 +216,7 @@ namespace BusCompanyClient
                 b.RegisterBooking();
             }
             BookedLabel.Visible = true;
+            PackageList.Items.Clear();
             ClearAll();
         }
 
