@@ -10,10 +10,10 @@ namespace BusCompanyClient
     public class Connection
     {
         //Access to the database
-        private const string Adress = "ddwap.mah.se";
-        private const string RootName = "af8408";
-        private const string Password = "Naelnael10";
-        private const string Database = "af8408";
+        private const string Adress = "***";
+        private const string RootName = "***";
+        private const string Password = "***";
+        private const string Database = "***";
 
         //Variables for the connection and the reader
         public MySqlConnection SQLConnection;
